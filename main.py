@@ -5,7 +5,7 @@ import os
 
 class CTkWindow(customtkinter.CTk):
     def __init__(self,
-                 app_title="CTk",  # Application name
+                 app_title="Кибер школа" Application name
                  geometry="500x300",  # Enter window geometry
                  titlebar_color="default",  # Specify the color of top bar
                  title_color="default",  # Title label color
