@@ -238,6 +238,49 @@ class CTkWindow(customtkinter.CTk):
             self.app.configure(fg_color=fg_color)
         if "title_color" in kwargs:
             self.title_label.configure(text_color=kwargs['title_color'])
+            
+users = {
+    "teacher1": "teacher1",
+    "teacher2": "teacher2",
+    "teacher3": "teacher3",
+    "parent1": "parent1",
+    "parent2": "parent2",
+    "parent3": "parent3",
+    "stud1": "stud1",
+    "stud2": "stud2",
+    "stud3": "stud3"
+}
+def login():
+    username = login_entry.get()
+    password = password_entry.get()
+
+    if username in users and users[username] == password:
+        # Проверка роли пользователя
+        role = None
+        for key, value in roles.items():
+            if username in value:
+                role = key
+                break
+        messagebox.showinfo("Авторизация", f"Вы успешно вошли как {role.capitalize()}")
+    else:
+        messagebox.showerror("Ошибка", "Неверный логин или пароль")
+
+tk.Label(root, text="Логин:", font=("Arial", 12), bg="lightgray").pack(pady=5)
+login_entry = tk.Entry(root, font=("Arial", 12))
+login_entry.pack(pady=5)
+
+tk.Label(root, text="Пароль:", font=("Arial", 12), bg="lightgray").pack(pady=5)
+password_entry = tk.Entry(root, font=("Arial", 12), show="*")
+password_entry.pack(pady=5)
+
+login_button = tk.Button(root, text="Войти", font=("Arial", 12), bg="green", fg="white", command=login)
+login_button.pack(pady=10)
+
+register_button = tk.Button(root, text="Регистрация", font=("Arial", 10), bg="orange", fg="white")
+register_button.pack(pady=5)
+
+forgot_button = tk.Button(root, text="Забыли пароль?", font=("Arial", 10), bg="gray", fg="white")
+forgot_button.pack(pady=5)
 
 
 if __name__ == "__main__":
